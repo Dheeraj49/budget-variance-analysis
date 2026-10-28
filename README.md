@@ -2,6 +2,8 @@
 
 **Tools:** Excel (Power Query, Tables, XLOOKUP, SUMIFS, IF, data validation, pivot tables, conditional formatting, charts), Power BI, DAX, Python (data generation)
 
+![Budget vs Actual dashboard](4_IMAGE/dashboard.png)
+
 > **Note:** The data in this project is **simulated** for a fictional company, "Brightline Retail Ltd". Real company budgets are confidential, so the dataset was generated with a short Python script (`5_SCRIPTS/generate_budget_data.py`) that includes realistic business patterns to investigate.
 
 ## Business problem
@@ -70,7 +72,16 @@ Added four calculated columns:
 
 ### 4. Power BI (`3_DASHBOARD/budget_variance.pbix`)
 
-DAX measures (`SUM`, `DIVIDE`, `CALCULATE`), KPI cards, a monthly revenue chart, a department variance chart, a matrix and a quarter slicer.
+A one-page report (1920×1080):
+
+- **KPI cards:** revenue, expenses, budgeted profit and actual profit. Actual profit turns red when it's negative.
+- **Revenue by month**, budget vs actual: shows the April–June shortfall.
+- **Expense variance by department:** overspend in red, underspend in green (rule-based conditional formatting).
+- **Monthly profit**, budget vs actual, with a zero line.
+- **Expense summary matrix:** department > category drill-down, with coloured variances.
+- **Quarter slicer:** filters every visual.
+
+**DAX used:** `SUM`, `CALCULATE` (revenue and expense measures filtered by Type), `DIVIDE` (variance %), and profit measures built from other measures.
 
 ## Key findings
 
@@ -133,8 +144,8 @@ Revenue came in €108K short **and** costs ran €62K over budget.
 ```
 1_DATA/      budget_vs_actual_2025.csv (simulated), department_owners.csv (lookup)
 2_EXCEL/     budget_variance_analysis.xlsx (Data, Owners, Summary and Pivot sheets)
-3_DASHBOARD/ budget_variance.pbix
-4_IMAGE/     Screenshots
+3_DASHBOARD/ budget_variance.pbix, dashboard.pdf, icons/, portfolio_theme.json
+4_IMAGE/     dashboard.png
 5_SCRIPTS/   generate_budget_data.py
 ```
 
